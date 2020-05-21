@@ -1,0 +1,31 @@
+
+var available=[], allowed=[], preferred=[], output=[], i=0, k=0, l=0, 
+available.sort(function(a, b){return a - b});
+function attempt(available, allowed, preferred) 
+{
+for(i=0; i<=available.length; i++)
+	{	
+		for(l=0; l<=allowed.length; l++)
+			{
+				
+				if(allowed[l] == available[i])
+					{
+						for(k=0; k<=preferred.length; k++)
+							{
+								if(available[i] == preferred[k]/*||available[i]==allowed[l]*/)
+									output.push(preferred[k]);
+								else if(available[i] < preferred[k]&&output.length!=0&&output.length+1<output.length&&((preferred[k]-available[i])<Math.abs(preferred[k]-available[i+1])))
+								{
+									output.push(preferred[k]);
+								}
+							}
+					}
+				else if (allowed[l]!=available[i]&&output.length==0)
+							output=[];
+						
+				 
+					
+			}
+	}
+	return output;
+}
